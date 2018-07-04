@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+<metadata minClientVersion="2.8.1">
+    <id>iridium.core</id>
+    <version>1.0.0</version>
+    <title>Iridium-Core</title>
+    <authors>Philippe Leybaert</authors>
+    <owners>Philippe Leybaert</owners>
+    <licenseUrl>https://raw.githubusercontent.com/activa/iridium-core/master/LICENSE</licenseUrl>
+    <projectUrl>http://github.com/activa/iridium-core</projectUrl>
+    <iconUrl>http://dstyler.com/vici/32x32/im-_IconPlain100-w32-h32.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>General purpose library for type conversion, reflection, caching, JSON, logging, ...</description>
+    <language>en-US</language>
+    <tags>iridium core reflection json conversion caching</tags>
+  </metadata>
+  <files>
+    <file src="src\Iridium-Core\bin\$Configuration$\netstandard1.0\*.dll" target="lib\netstandard1.0" />
+    <file src="src\Iridium-Core\bin\$Configuration$\netstandard1.0\*.pdb" target="lib\netstandard1.0" />
+    <file src="src\Iridium-Core\**\*.cs" exclude="**\bin\**\*.cs;**\obj\**\*.cs" target="src" />
+  </files>
+</package>
