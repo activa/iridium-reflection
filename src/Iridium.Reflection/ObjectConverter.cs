@@ -25,6 +25,7 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace Iridium.Reflection
@@ -56,10 +57,10 @@ namespace Iridium.Reflection
 			if (sourceType == targetType)
                 return value;
 
-			var implicitOperator = targetTypeInspector.GetMethod("op_Implicit", new [] {sourceType});
+			var implicitOperator = targetTypeInspector.ImplicitConversion(sourceType);
 
             if (implicitOperator != null)
-                return implicitOperator.Invoke(null, new [] {value});
+                return implicitOperator(value);
 
             var sourceTypeInspector = sourceType.Inspector();
 

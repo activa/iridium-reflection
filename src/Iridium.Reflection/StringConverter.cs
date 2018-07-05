@@ -223,10 +223,10 @@ namespace Iridium.Reflection
             }
             else
             {
-                var implicitOperator = targetTypeInspector.GetMethod("op_Implicit", new[] { typeof(string) });
+                var implicitOperator = targetTypeInspector.ImplicitConversion(typeof(string));
 
                 if (implicitOperator != null)
-                    returnValue = implicitOperator.Invoke(null, new[] { stringValue });
+                    returnValue = implicitOperator(stringValue);
             }
 
             if (returnValue == null)

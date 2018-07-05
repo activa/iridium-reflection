@@ -70,7 +70,7 @@ namespace Iridium.Reflection
                     case ParameterCompareType.Assignable:
                         return y.GetTypeInfo().IsAssignableFrom(x.GetTypeInfo());
                     case ParameterCompareType.Implicit:
-                        return y.Inspector().GetMethod("op_Implicit", new[] { x }) != null;
+                        return y.Inspector().ImplicitConversion(x) != null;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }

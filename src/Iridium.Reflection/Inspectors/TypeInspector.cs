@@ -407,21 +407,28 @@ namespace Iridium.Reflection
         public Type[] GetInterfaces() => _typeInfo.ImplementedInterfaces.ToArray();
 
         public MemberInspector[] GetFieldsAndProperties(BindingFlags bindingFlags)
-		{
-			MemberInfo[] members;
+        {
+            MemberInfo[] members;
 
-			if ((bindingFlags & BindingFlags.DeclaredOnly) != 0)
+            if ((bindingFlags & BindingFlags.DeclaredOnly) != 0)
                 members = _typeInfo.DeclaredFields.Where(fi => fi.Inspector().MatchBindingFlags(bindingFlags)).Union<MemberInfo>(_typeInfo.DeclaredProperties.Where(pi => pi.Inspector().MatchBindingFlags(bindingFlags))).ToArray();
-			else
+            else
                 members = WalkAndFindMultiple(t => t.GetTypeInfo().DeclaredFields.Where(fi => fi.Inspector().MatchBindingFlags(bindingFlags)).Union<MemberInfo>(t.GetTypeInfo().DeclaredProperties.Where(pi => pi.Inspector().MatchBindingFlags(bindingFlags))));
 
-			return members.Select(m => new MemberInspector(m)).ToArray();
-		}
+            return members.Select(m => new MemberInspector(m)).ToArray();
+        }
 
 
         public Func<object, object> ImplicitConversion(Type fromType)
         {
             var implicitOperator = GetMethod("op_Implicit", new[] { fromType });
+
+            if (implicitOperator != null)
+                return o => implicitOperator.Invoke(null, new[] { o });
+
+//            var fromOperators = toType.Inspector().GetMember("op_Implicit").OfType<MethodInfo>().Where(method => method.GetParameters()[0].ParameterType.Inspector().IsAssignableFrom(fromType));
+
+            implicitOperator = fromType.Inspector().GetMember("op_Implicit").OfType<MethodInfo>().FirstOrDefault(method => method.GetParameters().Length == 1 && method.GetParameters()[0].ParameterType.Inspector().IsAssignableFrom(fromType) && method.ReturnType == Type);
 
             if (implicitOperator != null)
                 return o => implicitOperator.Invoke(null, new[] { o });
