@@ -1,20 +1,18 @@
 <?xml version="1.0"?>
 <package>
-<metadata minClientVersion="2.8.1">
-    <id>iridium.reflection</id>
-    <version>2.0.0</version>
-    <title>iridium.reflection</title>
-    <authors>Philippe Leybaert</authors>
-    <owners>Philippe Leybaert</owners>
-    <licenseUrl>https://raw.githubusercontent.com/activa/iridium-reflection/master/LICENSE</licenseUrl>
-    <projectUrl>http://github.com/activa/iridium-reflection</projectUrl>
-    <iconUrl>http://dstyler.com/vici/32x32/im-_IconPlain100-w32-h32.png</iconUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Reflection and type conversion library for .NET</description>
-    <language>en-US</language>
-    <tags>iridium reflection conversion</tags>
-  </metadata>
-  <files>
-    <file src="src\Iridium.Reflection\bin\Release\netstandard1.0\*.dll" target="lib\netstandard1.0" />
-  </files>
+    <metadata>
+        <id>iridium.reflection</id>
+        <version>2.0.1.7071</version>
+        <authors>Philippe Leybaert</authors>
+        <owners>Philippe Leybaert</owners>
+        <licenseUrl>https://raw.githubusercontent.com/activa/iridium-reflection/master/LICENSE</licenseUrl>
+        <projectUrl>http://github.com/activa/iridium-reflection</projectUrl>
+        <iconUrl>http://www.iridiumdb.com/img/IconPlain64.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Reflection and type conversion library for .NET</description>
+        <tags>iridium reflection conversion</tags>
+    </metadata>
+    <files>
+        <file src="src\Iridium.Reflection\bin\Release\netstandard1.0\*.dll" target="lib\netstandard1.0" />
+    </files>
 </package>
